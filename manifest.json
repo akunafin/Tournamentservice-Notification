@@ -1,0 +1,13 @@
+{
+    "manifest_version": 2,
+   
+    "name": "Notify Players",
+    "version": "0.1.0",
+    "description": "Tournamentservice Notificator",
+   
+    "content_scripts": [{
+      "js": ["modify.js"],
+      "matches": ["https://tournamentservice.net/tournament.php*"]
+    }]
+   
+  }
