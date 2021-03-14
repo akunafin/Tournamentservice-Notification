@@ -4,11 +4,16 @@
     "name": "Notify Players",
     "version": "0.1.1",
     "description": "Tournamentservice Notificator",
+
+    "permissions": [
+        "storage"
+    ],
    
     "content_scripts": [{
       "js": ["modify.js"],
       "css": ["modify.css"],
-      "matches": ["https://tournamentservice.net/*"]
+      "matches": ["https://tournamentservice.net/*"],
+      "all_frames": true
     }]
    
   }

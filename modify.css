@@ -1,0 +1,21 @@
+ div.sms_div {
+    position: absolute;
+    bottom: 2px;
+    width: 100%
+ }
+ 
+ button.sms {
+    outline: none;
+    display: block;
+    margin: auto;
+    border: 1px solid black;
+    border-radius: 20%;
+    background: darkorange;
+    color: white;
+    font-size: 80%;
+}
+
+button.sms:hover {
+    background: lightblue;
+    color: darkorange;
+}
