@@ -7,6 +7,10 @@ window.addEventListener("load", function(){
     var games = chart_section.querySelectorAll('table[class^="No"]');
     for (var i = 0, l = games.length; i < l; i++) {
         var game = games[i];
+        var running_game_time = game.querySelector("time.run");
+        if (running_game_time === null)
+            continue;
+        var table = running_game_time.textContent.match("^.+ ([0-9]+):.+:.+$")[1];
         var mark = game.querySelector("tbody tr td mark");
         var div = document.createElement("div");
         div.className = "sms_div";
@@ -19,6 +23,10 @@ window.addEventListener("load", function(){
         button.addEventListener("click", function(e) {
             var button = e.srcElement || e.target;
             var game_table = button.closest("table");
+            var running_game_time = game_table.querySelector("time.run");
+            if (running_game_time === null)
+                return;
+            var table = running_game_time.textContent.match("^.+ ([0-9]+):.+:.+$")[1];
             var player_divs = game_table.querySelectorAll("div[data-player]");
             var player1_id = player_divs[0].getAttribute("data-player");
             player1_name = player_divs[0].textContent;
@@ -28,14 +36,14 @@ window.addEventListener("load", function(){
                 if (JSON.stringify(result) !== '{}') {
                     key = Object.keys(result)[0];
                     phone = result[key];
-                    alert("Sending message: \"" + player1_name + " VS " + player2_name + "\" to the phone number: " + phone)
+                    alert("Sending message:\n \"" + player1_name + " VS " + player2_name + "\" playing on the table " + table + "\n to the phone number: " + phone)
                 }
             });
             chrome.storage.sync.get([player2_id], function(result) {
                 if (JSON.stringify(result) !== '{}') {
                     key = Object.keys(result)[0];
                     phone = result[key];
-                    alert("Sending message: \"" + player1_name + " VS " + player2_name + "\" to the phone number: " + phone)
+                    alert("Sending message:\n \"" + player1_name + " VS " + player2_name + "\" playing on the table " + table + "\n to the phone number: " + phone)
                 }
             });
         });
