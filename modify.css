@@ -19,3 +19,7 @@ button.sms:hover {
     background: lightblue;
     color: darkorange;
 }
+
+#tab-bracket em {
+    margin-right: 17px;
+}
